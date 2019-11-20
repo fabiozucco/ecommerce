@@ -8,7 +8,13 @@
 
 
 body {
+	display: grid;
 	height: 100%;
+	grid-template-rows: 1fr 8fr 1fr;
+	grid-template-columns: 1fr;
+	grid-template-areas: "menu" 
+						"content"
+						"footer";
 }
 
 /* width */
@@ -35,6 +41,16 @@ body {
 	float: left;
 	width: 100%;
 	position: relative;
+	grid-area: menu;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr 4fr auto;
+	justify-self: center;
+	align-self: center;
+	grid-template-areas: "first-menu"
+						"middle-menu"
+						"bottom-menu";
+
 }
 
 .cart {
@@ -45,17 +61,15 @@ body {
 	margin-left: 95%;
 	overflow: hidden;
 	text-decoration: none;
+	grid-area: middle-menu;
+	z-index: 10;
 }
 
 .middle-layout {
-	
 	width: 100%;
-
 }
 
-
-
-.nav-middle button {
+.nav-bottom button {
 	width: 100px;
 	height: 30px;
 	background-color: transparent;
@@ -70,7 +84,7 @@ body {
 	margin: 25px;
 }
 
-.nav-middle .link {
+.nav-bottom .link {
 	float: left;
 	position: relative;
 	z-index: 1000;
@@ -88,13 +102,13 @@ body {
   	border-radius: 0px 0px 20px 20px;
 }
 
-.nav-middle .link a {
+.nav-bottom .link a {
 	color: black;
 	word-spacing: 20px;
 	font-size: 15px;
 }
 
-.nav-middle .link img {
+.nav-bottom .link img {
 	width: auto;
 	height: 150px;
 	color: black;
@@ -102,7 +116,7 @@ body {
 	font-size: 15px;
 }
 
-.nav-middle .polt:focus ~ .link {
+.nav-bottom .polt:focus ~ .link {
 	visibility: visible;
 }
 
@@ -131,6 +145,7 @@ input[type="text"] {
 	position: absolute;
 	margin: 60px 35.5%;
 	z-index: 1000;
+	grid-area: middle-menu;
 }
 
 .img-mob img {
@@ -243,13 +258,12 @@ animation-direction: alternate;
 .nav-top {
 	background-color: white;
 	width: 100%;
-	height: 120px;
-	float: left;
 	vertical-align: middle;
 	text-align: center;
 	padding-top: 20px;
 	word-spacing: 50px;
 	z-index: 2;
+	grid-area: first-menu;
 }
 
 .nav-top a {
@@ -261,6 +275,10 @@ animation-direction: alternate;
 }
 
 .nav-middle {
+	grid-area: middle-menu;
+}
+
+.nav-bottom {
 	width: 100%;
 	height: 70px;
 	vertical-align: middle;
@@ -273,9 +291,10 @@ animation-direction: alternate;
 	font-weight: bold;
 	border-top: 1px solid #dbdbdb;
 	border-bottom: 1px solid #dbdbdb;
+	grid-area: bottom-menu;
 }
 
-.nav-middle a {
+.nav-bottom a {
 	text-decoration: none;
 	font-family: Arial;
 	font-size: 1.2em;
@@ -337,22 +356,20 @@ animation-direction: alternate;
 	position: absolute;
 	margin: 10px 30px;
 	background-color: white;
+	grid-area: middle-menu;
 }
 
 footer {
+	grid-area: footer;
 	background-color: #ededed;
 	color: grey;
 	text-align: center;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	height:200px;
 	width:100%;	
-
 	clear: both;
     position: relative;
-    height: 200px;
     bottom: 0px;
-
     display: flex;
     flex-direction: row;
 

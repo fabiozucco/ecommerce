@@ -12,16 +12,16 @@ const md5 = require('md5');
 
 const MONGODB_URL = 'mongodb://@localhost:27017/store';
 
-mongoose.connect(MONGODB_URL, {useNewUrlParser: true}, err => {
-    if (err) {
-        console.error('[SERVER_ERROR] MongoDB Connection:', err);
-        process.exit(1);
-    }
-    console.info('Mongo connected');
+// mongoose.connect(MONGODB_URL, {useNewUrlParser: true}, err => {
+//     if (err) {
+//         console.error('[SERVER_ERROR] MongoDB Connection:', err);
+//         process.exit(1);
+//     }
+//     console.info('Mongo connected');
     ecommerce.listen(3000, () => {
     console.log('Escutando na porta 3000');
   });
-});
+// });
 
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 

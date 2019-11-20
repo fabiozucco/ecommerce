@@ -13,9 +13,6 @@
 </head>
 <body>
 	<div class="top-layout">
-		<div class="cart">
-			<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>	
-		</div>
 		<nav class="nav-top">
 			<a href="">Menu</a>
 			<a href="">Galeria</a>
@@ -23,7 +20,7 @@
 			<a href="">Contato</a>
 			<a href="">Blog</a>
 		</nav>
-		<nav class="nav-middle">
+		<nav class="nav-bottom">
 				<button class="polt">Poltronas
 				</button>
 				<button class="polt">Cadeiras
@@ -47,12 +44,17 @@
 					<img src="./images/HOME_POLTRONA.png">					
     			</div>
 			</nav>
-		<div class="logo">
-			<a href="#"><img src="../../images/logo1.png"></a>
-		</div>
-		<div class="search">
-			<input type="text" name="" placeholder="Pesquise">
-			<a href="?q=" rel="search"><button type="submit"><i class="fa fa-search"></i></button></a>
+		<div class="nav-middle"></div>
+			<div class="logo">
+				<a href="#"><img src="../../images/logo1.png"></a>
+			</div>
+			<div class="search">
+				<input type="text" name="" placeholder="Pesquise">
+				<a href="?q=" rel="search"><button type="submit"><i class="fa fa-search"></i></button></a>
+			</div>
+			<div class="cart">
+				<a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>	
+			</div>
 		</div>
 	</div>
 	{% block content %}
