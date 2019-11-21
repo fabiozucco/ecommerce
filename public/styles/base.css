@@ -10,7 +10,7 @@
 body {
 	display: grid;
 	height: 100%;
-	grid-template-rows: 1fr 8fr 1fr;
+	grid-template-rows: 1fr 3fr minmax(1fr, 2fr);
 	grid-template-columns: 1fr;
 	grid-template-areas: "menu" 
 						"content"
@@ -38,13 +38,11 @@ body {
 }
 
 .top-layout {
-	float: left;
-	width: 100%;
 	position: relative;
 	grid-area: menu;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 4fr auto;
+	grid-template-rows: 1fr 3fr auto;
 	justify-self: center;
 	align-self: center;
 	grid-template-areas: "first-menu"
@@ -66,7 +64,14 @@ body {
 }
 
 .middle-layout {
-	width: 100%;
+	display: grid;
+	grid-template-columns: 2fr 9fr;
+	grid-template-areas: "filtro conteudo";
+}
+
+.filtro {
+	background-color: grey;
+	grid-area: filtro;
 }
 
 .nav-bottom button {
@@ -317,11 +322,12 @@ animation-direction: alternate;
 }
 
 .back {	
-	display: flex;
-	width: 100%;
-	background-color: white;
-	flex-wrap: wrap;
-	justify-content: center;
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-area: conteudo;
+	grid-row-gap: 10px;
+	height: 1vh;
 }
 
 /*.back p {
@@ -333,10 +339,34 @@ animation-direction: alternate;
 
 
 .back img {
-	margin: 60px;
-	max-width: 200px;
-	max-height: 200px;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	justify-content: center;
+	grid-area: img;
+	margin: 20px;
+	max-width: 250px;
+	max-height: 250px;
 	background-color: white;
+}
+
+.product-item {
+	justify-self: center;
+	border-radius: 30px;
+	display: grid;
+	margin-left: 10px;
+	background-color: #ebebeb;
+	grid-template-rows: 2fr 1fr;
+	grid-template-columns: 1fr;
+	grid-template-areas: "img"
+						"text";
+}
+
+.product-item p {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	grid-area: text;
 }
 
 /*.middle-banner {
