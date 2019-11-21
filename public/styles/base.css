@@ -8,9 +8,9 @@
 
 
 body {
+	height: 100vh;
 	display: grid;
-	height: 100%;
-	grid-template-rows: 1fr 3fr minmax(1fr, 2fr);
+	grid-template-rows: auto auto 1fr;
 	grid-template-columns: 1fr;
 	grid-template-areas: "menu" 
 						"content"
@@ -64,9 +64,14 @@ body {
 }
 
 .middle-layout {
+	grid-area: content;
 	display: grid;
 	grid-template-columns: 2fr 9fr;
 	grid-template-areas: "filtro conteudo";
+}
+
+.middle-layout .product-item {
+
 }
 
 .filtro {
@@ -338,7 +343,7 @@ animation-direction: alternate;
 }*/
 
 
-.back img {
+.middle-layout img {
 	display: flex;
 	align-items: center;
 	flex-wrap: wrap;
@@ -351,6 +356,7 @@ animation-direction: alternate;
 }
 
 .product-item {
+	grid-area: conteudo;
 	justify-self: center;
 	border-radius: 30px;
 	display: grid;
@@ -389,17 +395,16 @@ animation-direction: alternate;
 	grid-area: middle-menu;
 }
 
-footer {
+.footer {
 	grid-area: footer;
+}
+
+footer {
 	background-color: #ededed;
 	color: grey;
 	text-align: center;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	width:100%;	
-	clear: both;
-    position: relative;
-    bottom: 0px;
     display: flex;
     flex-direction: row;
 
