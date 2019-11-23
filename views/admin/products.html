@@ -1,0 +1,103 @@
+{% extends '../layouts/base.html' %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<link rel="stylesheet" href="/styles/base.css">
+{% endblock %}
+{% block content %}
+<div class="middle-layout">
+  <hr>
+  <h1 class="display-6 text-center">Insira seus dados</h1>
+  <hr>
+  <br>
+  <form onsubmit="send(event)">
+      <div class="row">
+        <div class="col-1">
+          <label>id</label>
+          <input type="text" name="" value="" id="id" class="form-control" readonly>
+        </div>
+        <div class="col-5">
+          <label>Nome</label>
+          <input type="text" name="" value="" id="name" class="form-control">
+        </div>
+        <div class="col-6">
+          <label>Preço</label>
+          <input type="text" name="" value="" id="price" class="form-control">
+        </div>
+        <div class="col-6">
+          <label>URL da Imagem</label>
+          <input type="text" name="" value="" id="url" class="form-control">
+        </div>
+        <div class="col-6">
+          <label>Descrição</label>
+          <input type="text" name="" value="" id="description" class="form-control">
+        </div>
+    </div>
+    <br>
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" class="btn btn-success">Enviar</button>
+          <button type="reset" class="btn btn-primary mr-4">Novo</button>
+        </div>
+      </div>
+    </form>
+  <br>
+
+  <hr>
+<h1 class="display-8 text-center">Lista de Produtos</h1>
+{% if products | length > 0 %}
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th scope="col">id</th>
+    <th scope="col">Nome</th>
+    <th scope="col">Preço</th>
+    <th scope="col">URL</th>
+    <th scope="col">Descrição</th>
+    <th scope="col"></th>
+    <th scope="col"></th>
+  </tr>
+</thead>
+{% for product in products %}
+<tbody>
+  <tr>
+    <td>{{ product._id }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.price }}</td>
+    <td>{{ product.url }}</td>
+    <td>{{ product.description }}</td>
+    <td><button class="btn btn-sm btn-danger btn-remove" id="{{ product._id }}">Excluir</button></td>
+    <td><button class="btn btn-sm btn-warning btn-update" id="{{ product._id }}">Editar</button></td>
+  </tr>
+</tbody>
+  {% endfor %}
+</table>
+{% else %}
+<div class="jumbotron">
+
+<h5 class="text-center">Sem produtos cadastrados</h5>
+</div>
+
+{% endif %}
+
+
+</div>
+{% endblock %}
+
+{% block script %}
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+$( function() {
+  $( "#birthday" ).datepicker();
+} );
+</script>
+<script src="/js/products.js"></script>
+<script src="/js/base.js"></script>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends './layouts/base.html' %}
+	{% block styles %}
+    {% endblock %}
+	{% block content %}
+	<div class="middle-layout">
+<!-- 		<div class="lscontent">
+			<ul>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+				<li><a href="#">Poltronas</a></li>
+				<li><a href="#">Roupeiros</a></li>
+				<li><a href="#">Armários</a></li>
+			</ul>
+		</div> -->
+		<div class="rscontent">
+			<h1 class="display-8 text-center">Lista de Produtos</h1>
+				{% if products | length > 0 %}
+				<table class="table table-striped">
+				<thead>
+				  <tr>
+				    <th scope="col">id</th>
+				    <th scope="col">Nome</th>
+				    <th scope="col">Preço</th>
+				    <th scope="col">URL</th>
+				    <th scope="col">Descrição</th>
+				    <th scope="col"></th>
+				    <th scope="col"></th>
+				  </tr>
+				</thead>
+				{% for product in products %}
+				<tbody>
+				  <tr>
+				    <td>{{ product._id }}</td>
+				    <td>{{ product.name }}</td>
+				    <td>{{ product.price }}</td>
+				    <td><img src="{{ product.url }}"></td>
+				    <td>{{ product.description }}</td>
+				  </tr>
+				</tbody>
+				  {% endfor %}
+				</table>
+				{% else %}
+				<div class="jumbotron">
+
+				<h5 class="text-center">Sem produtos cadastrados</h5>
+			</div>
+
+			{% endif %}
+<!-- 			<img src="images/HOME_POLTRONA.png">
+			<img src="images/HOME_POLTRONA.png">
+			<img src="images/HOME_POLTRONA.png">
+			<img src="images/HOME_POLTRONA.png">	
+			<img src="images/HOME_POLTRONA.png">
+			<img src="images/HOME_POLTRONA.png">
+			<img src="images/HOME_POLTRONA.png">
+			<img src="images/HOME_POLTRONA.png">
+			<img src="images/HOME_POLTRONA.png">
+			<img src="images/HOME_POLTRONA.png"> -->	
+		</div>
+	</div>
+{% endblock %}

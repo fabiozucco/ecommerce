@@ -166,7 +166,29 @@ body {
 
 
 
+form {
+  margin-left: 250px;
+  margin-right: 250px;
+}
 
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.btn {
+  float: right;
+  width: 100px;
+  height: 50px;
+  font-size: 18px;
+}
+
+.table {
+  margin-left: 250px;
+  margin-right: 250px;
+  width: 67.5%;
+  text-align: center;
+}
 
 
 
