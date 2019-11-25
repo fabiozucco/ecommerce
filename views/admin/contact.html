@@ -1,0 +1,89 @@
+{% extends '../layouts/base.html' %}
+
+
+{% block styles %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<link rel="stylesheet" href="/styles/base.css">
+{% endblock %}
+{% block content %}
+<div class="middle-layout">
+  <br>
+    <h1 class="display-8 text-center">Lista de Mensagens</h1>
+    {% if contacts | length > 0 %}
+    <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Data</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Mensagem</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    {% for contact in contacts %}
+    <tbody>
+      <tr>
+        <td>{{ contact._id }}</td>
+        <td>{{ contact.date }}</td>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.message }}</td>
+        <td><button class="btn btn-sm btn-danger btn-remove" id="{{ contact._id }}">Excluir</button></td>
+        <td>
+           <button class="btn btn-sm btn-warning btn-response" id="{{ contact._id }}" value="{{ contact.email }}">Responder</button>
+        </td>
+        <tr>
+          <td class="inner{{ contact._id }}"></td>
+        </tr>
+      </tr>
+    </tbody>
+  {% endfor %}
+
+
+
+</table>
+
+
+<!-- TOOGLE -->
+      <div class="response" style="display: none;">
+        <tr>
+          <td>
+            <div class="col-1">
+              <label>Assunto</label>
+              <input type="text" name="" value="" id="subject" class="form-control">
+            </div>
+            <div class="col-1">
+            <label>Resposta</label>
+            <textarea id="response" class="form-control"></textarea>
+             <button type="submit" class="btn btn-sm btn-success btn-send">Enviar</button>
+            </div>
+          </td>
+          </tr> 
+        </div>
+<!-- -->
+
+{% else %}
+<div class="jumbotron">
+
+<h5 class="text-center">Sem mensagens cadastradass</h5>
+</div>
+
+{% endif %}
+
+
+</div>
+{% endblock %}
+
+{% block script %}
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="/js/contact.js"></script>
+<script src="/js/base.js"></script>
+{% endblock %}

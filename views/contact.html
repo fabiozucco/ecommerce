@@ -9,27 +9,30 @@
 {% endblock %}
 {% block content %}
 <div class="middle-layout">
-  <hr>
-  <h1 class="display-6 text-center">Insira seus dados</h1>
-  <hr>
+  <h1 class="display-6 text-center">Insira a Mensagem</h1>
   <br>
-    <div class="row">
-      <div class="col-5">
-        <label>Nome</label>
-        <input type="text" name="" value="" id="name" class="form-control">
-      </div>
-      <div class="col-3">
-        <label>Mensagem</label>
-        <input type="text" name="" value="" id="message" class="form-control">
-      </div>
-  </div>
-  <br>
-    <div class="row">
-      <div class="col-12">
-        <button type="submit" class="btn btn-success">Enviar</button>
-        <button type="reset" class="btn btn-primary mr-4">Novo</button>
-      </div>
+  <form onsubmit="send(event)">
+      <div class="row">
+        <div class="col-5">
+          <label>Nome</label>
+          <input type="text" name="" value="" id="name" class="form-control">
+        </div>
+        <div class="col-5">
+          <label>Email</label>
+          <input type="text" name="" value="" id="email" class="form-control">
+        </div>
+        <div class="col-3">
+          <label>Complemento</label>
+          <textarea id="message" class="form-control"></textarea>
+        </div>
     </div>
+    <br>
+      <div class="row">
+        <div class="col-12">
+          <button type="submit" class="btn btn-success">Enviar</button>
+        </div>
+      </div>
+    </form>
   <br>
 </div>
 
@@ -46,6 +49,6 @@ $( function() {
   $( "#birthday" ).datepicker();
 } );
 </script>
-<script src="/js/form.js"></script>
+<script src="/js/contact.js"></script>
 <script src="/js/base.js"></script>
 {% endblock %}

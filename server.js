@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const ProductsSchema = require('./schemas/Products');
 // const UsersSchema = require('./schemas/Users');
 const ClientsSchema = require('./schemas/Clients');
+const ContactsSchema = require('./schemas/Contacts');
 // const CategoriesSchema = require('./schemas/Categories');
 const md5 = require('md5');
 
@@ -26,6 +27,7 @@ mongoose.connect(MONGODB_URL, {useNewUrlParser: true}, err => {
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 const Products = mongoose.model('Products', ProductsSchema);
+const Contacts = mongoose.model('Contacts', ContactsSchema);
 // const Users = mongoose.model('User', UsersSchema);
 const Clients = mongoose.model('Clients', ClientsSchema);
 // const Categories = mongoose.model('Categories', CategoriesSchema);
@@ -174,6 +176,169 @@ ecommerce.get('/products', (req, res) => {
 
 
 
+// REQUISIÇÃO - CONTATOS
+
+ecommerce.get('/contact', (req,res) => {
+  res.render('contact.html');
+});
+
+ecommerce.post('/contact', (req, res) => {
+  var contact = new Contacts(req.body);
+
+  contact.save((err, contact) => {
+    console.info('Mensagem recebida de :'+ contact.name);
+    res.send('ok');
+  });
+
+  var email = req.body.email;
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'senacerechim2019@gmail.com',
+      pass: 'senacrserechim'
+    }
+  });
+  const mailOptions = {
+    from: 'senacerechim2019@gmail.com',
+    to: email,
+    subject: 'Confirmação de recebimento - ATC Forniture',
+    text: 'Olá, ' + req.body.name + '. Agradeçemos por entrar en contato, nossa equipe responderá o mais breve possível. Enquanto isso, não deixe de checar nossas novidades. Att, ATC Forniture.'
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+    res.send('ok');
+  });
+});
+
+ ecommerce.delete('/admin/contact/:id', (req, res) => {
+  Contacts.findOneAndRemove({_id: req.params.id}, (err, obj) => {
+    if(err) {
+      res.send('error');
+    }
+    res.send('ok');
+  });
+});
+
+ecommerce.get('/admin/contact', (req, res) => {
+  Contacts.find((err, contacts) => {
+       res.render('admin/contact.html', {contacts: contacts});
+     });
+ });
+
+
+
+ecommerce.post('/admin/contact', (req, res) => {
+  var response = req.body;
+
+  var id = req.body.id;
+  var email = req.body.email;
+  var subject = req.body.subject;
+  var responsa = req.body.response;
+
+
+
+  console.info('Mensagem enviada à: '+ email);
+
+  // response.save((err, response) => {
+  // console.info('Mensagem enviada à: '+ response.email);
+  // res.send('ok');
+  // });
+ 
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'senacerechim2019@gmail.com',
+      pass: 'senacrserechim'
+    }
+  });
+  const mailOptions = {
+    from: 'senacerechim2019@gmail.com',
+    to: email,
+    subject: subject,
+    text: responsa
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+    res.send('ok');
+  });
+});
+
+
+
+
+
+
+
+
+// // REQUISIÇÃO - RESPONSE
+
+// ecommerce.get('/admin/response', (req, res) => {
+//   Contacts.find((err, contacts) => {
+//        res.render('admin/response.html', {contacts: contacts});
+//      });
+//  });
+
+// ecommerce.post('/admin/response', (req, res) => {
+//   var contact = new Contacts(req.body);
+
+//   contact.save((err, contact) => {
+//     console.info('Mensagem recebida de :'+ contact.name);
+//     res.send('ok');
+//   });
+
+
+
+//   var email = req.body.email;
+//   const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//       user: 'senacerechim2019@gmail.com',
+//       pass: 'senacrserechim'
+//     }
+//   });
+//   const mailOptions = {
+//     from: 'senacerechim2019@gmail.com',
+//     to: email,
+//     subject: 'Confirmação de recebimento - ATC Forniture',
+//     text: 'Olá, ' + req.body.name + '. Agradeçemos por entrar em contato, nossa equipe responderá o mais breve possível. Enquanto isso, não deixe de checar nossas novidades. Att, ATC Forniture.'
+//   };
+
+//   transporter.sendMail(mailOptions, (error, info) => {
+//     if (error) {
+//       console.log(error);
+//     } else {
+//       console.log('Email sent: ' + info.response);
+//     }
+//     res.send('ok');
+//   });
+// });
+
+//  ecommerce.delete('/admin/contact/:id', (req, res) => {
+//   Contacts.findOneAndRemove({_id: req.params.id}, (err, obj) => {
+//     if(err) {
+//       res.send('error');
+//     }
+//     res.send('ok');
+//   });
+// });
+
+
+
+
+
+
+
 //API - CLIENTES
 
 ecommerce.get('/api/clients', (req, res) => {
@@ -205,6 +370,24 @@ ecommerce.get('/api/products/:id', (req, res) => {
       } else {
         const product = obj[0];
         res.send(product);
+      }
+  });
+});
+
+
+
+//API - CONTATOS
+ecommerce.get('/api/contact', (req, res) => {
+  res.send(listContacts);
+});
+
+ecommerce.get('/api/contact/:id', (req, res) => {
+  Contacts.find({"_id": req.params.id }, (err, obj) => {
+      if (err) {
+        res.send(null);
+      } else {
+        const contact = obj[0];
+        res.send(contact);
       }
   });
 });
