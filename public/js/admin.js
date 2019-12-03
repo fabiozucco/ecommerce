@@ -32,7 +32,6 @@ function send (event) {
       toastr["error"]("Campo email obrigatório");
       return
   }
-  console.log(phone);
   if (phone == "" || phone.length < 9) {
       toastr["error"]("Campo telefone obrigatório");
       return

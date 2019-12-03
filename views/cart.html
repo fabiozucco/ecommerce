@@ -1,0 +1,58 @@
+{% extends './layouts/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-8 p-5">
+    <div class="jumbotron">
+      <h6 class="display-4">Olá, para prosseguir digite seu e-mail e senha para entrar</h6>
+      <form class="mt-5" method="post">
+        <div class="row">
+          <div class="col-5">
+            <input type="email" required name="email" id="email" value="" class="form-control" placeholder="email@email">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-5 mt-4">
+            <input type="password" required placeholder="senha" name="password" id="password" value="" class="form-control">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-5 mt-4 text-center">
+            <button type="submit" class="btn btn-primary btn-block" name="button">Entrar</button>
+            ou
+            <a href="/form" class="btn btn-outline-success btn-block" name="button">Cadastre-se</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-4">
+    <div class="mt-5 jumbotron">
+      <h5 class="mb-3">Meu Carrinho</h5>
+      <div id="cart" >
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block title %}
+  Carrinho de Compras
+{% endblock %}
+
+{% block styles %}
+{% endblock %}
+
+{% block script %}
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+$( function() {
+  $( "#birthday" ).datepicker();
+} );
+</script>
+<script src="/js/cart.js"></script>
+<script src="/js/base.js"></script>
+{% endblock %}

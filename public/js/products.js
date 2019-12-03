@@ -126,3 +126,37 @@ $("#phone").mask("(99) 9999-9999?9")
         //         element.mask("(99) 9999-9999?9");
         //     }
         // });
+
+
+
+
+
+function addToCart (product) {
+  var cart = JSON.parse(sessionStorage.getItem("cart"));
+  if (!cart) {
+    cart = [];
+  }
+
+  var find = cart.find(function (item) {
+    return item.id === product.id;
+  });
+
+  if (find) {
+    find.quantity++;
+  } else {
+    product.quantity = 1;
+    cart.push(product);
+  }
+  toastr["success"](product.name + " adicionado ao carrinho");
+  sessionStorage.setItem("cart", JSON.stringify(cart));
+  showCartItems();
+}
+
+$(document).ready(function () {
+  $('#addProduct').click(function () {
+    var id = $('#productId').val();
+    $.get('/api/products/' + id, function (product) {
+      addToCart(product);
+    })
+  });
+});        

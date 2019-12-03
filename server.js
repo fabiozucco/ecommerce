@@ -133,11 +133,12 @@ ecommerce.get('/admin/products', (req, res) => {
  });
 
  ecommerce.delete('/admin/products/:id', (req, res) => {
-  Clients.findOneAndRemove({_id: req.params.id}, (err, obj) => {
+  Products.findOneAndRemove({_id: req.params.id}, (err, obj) => {
     if(err) {
       res.send('error');
     }
     res.send('ok');
+    console.info('Produto:'+ req.params.name + ' removido');
   });
 });
 
@@ -164,6 +165,10 @@ ecommerce.get('/form', (req,res) => {
 	res.render('form.html');
 });
 
+ecommerce.get('/cart', (req,res) => {
+  res.render('cart.html');
+});
+
 ecommerce.get('/products', (req, res) => {
   Products.find((err, products) => {
        res.render('products.html', {products: products});
@@ -171,7 +176,17 @@ ecommerce.get('/products', (req, res) => {
  });
 
 
+// REQUISIÇÃO - LOGIN
 
+ecommerce.post('/login', (req, res) => {
+  Clients.find({'email': req.body.email, 'password': md5(req.body.password)}, (err, obj) => {
+    if (err || obj.length === 0) {
+      res.send('error');
+    } else {
+      res.send('ok');
+    }
+  })
+})
 
 
 
@@ -341,9 +356,9 @@ ecommerce.post('/admin/contact', (req, res) => {
 
 //API - CLIENTES
 
-ecommerce.get('/api/clients', (req, res) => {
-  res.send(listClients);
-});
+// ecommerce.get('/api/clients', (req, res) => {
+//   res.send(listClients);
+// }); 
 
 ecommerce.get('/api/clients/:id', (req, res) => {
   Clients.find({"_id": req.params.id }, (err, obj) => {
@@ -359,9 +374,9 @@ ecommerce.get('/api/clients/:id', (req, res) => {
 
 
 //API - PRODUTOS
-ecommerce.get('/api/products', (req, res) => {
-  res.send(listProducts);
-});
+// ecommerce.get('/api/products', (req, res) => {
+//   res.send(listProducts);
+// });
 
 ecommerce.get('/api/products/:id', (req, res) => {
   Products.find({"_id": req.params.id }, (err, obj) => {
@@ -377,9 +392,9 @@ ecommerce.get('/api/products/:id', (req, res) => {
 
 
 //API - CONTATOS
-ecommerce.get('/api/contact', (req, res) => {
-  res.send(listContacts);
-});
+// ecommerce.get('/api/contact', (req, res) => {
+//   res.send(listContacts);
+// });
 
 ecommerce.get('/api/contact/:id', (req, res) => {
   Contacts.find({"_id": req.params.id }, (err, obj) => {

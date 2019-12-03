@@ -86,6 +86,8 @@
 				    <td>{{ product.description }}</td>
 				  </tr>
 				</tbody>
+				<input type="hidden" name="productId" id="productId" value="{{ product._id }}" />
+				<button id="addProduct" class="btn float-right btn-danger">Adicionar produto</button>
 				  {% endfor %}
 				</table>
 				{% else %}
@@ -107,4 +109,18 @@
 			<img src="images/HOME_POLTRONA.png"> -->	
 		</div>
 	</div>
+{% endblock %}
+{% block script %}
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+$( function() {
+  $( "#birthday" ).datepicker();
+} );
+</script>
+<script src="/js/products.js"></script>
+<script src="/js/base.js"></script>
 {% endblock %}
