@@ -61,6 +61,7 @@ body {
 						"bottom-menu";
 	height: fit-content;
 	border-bottom: 1px solid black;
+
 }
 	.top-menu {
 		display: flex;
@@ -78,13 +79,14 @@ body {
 		}
 
 	.middle-menu {
+		grid-area: middle-menu;
 		display: grid;
 		grid-template-columns: 1fr 3fr 1fr;
 		grid-template-rows: 1fr;
 		grid-template-areas: "logo search cart";
 		width: 100%;
 		height: 150px;
-		background-color: white;
+		background-color: #e5e5e4;
 		border-bottom: 1px solid #e5e5e4;
 	}
 		.logo {
@@ -97,13 +99,17 @@ body {
 				height: 100px;
 				width: auto;
 				margin-left: 10px;
+				padding-right: 20px; 
+				border-right: 1px solid grey;
 			}
 		.search {
 			grid-area: search;
 			display: flex;
 			flex-wrap: nowrap;
-			justify-content: center;
+			justify-content: left;
 			align-items: center;
+			font-size: 18px;
+			text-align: left;
 		}
 			.search form {
 				flex-wrap: nowrap;
@@ -132,6 +138,7 @@ body {
 			margin-right: 20px;
 		}
 	.bottom-menu {
+		grid-area: bottom-menu;
 		display: flex;
 		height: 50px;
 		justify-content: space-between;
