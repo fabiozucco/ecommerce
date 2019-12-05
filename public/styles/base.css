@@ -163,11 +163,6 @@ body {
 												"line2 line2"
 											 "lscontent rscontent";
 	min-height: 100vh;
-
-/*	margin-left: 4vw;
-	margin-right: 4vw;
-	margin-top: 4vw;
-	margin-bottom: 4vw;*/
 }
 	.offer {
 		grid-area: line1;
@@ -176,7 +171,7 @@ body {
 		border-bottom: 1px solid grey;
 	}
 		.offer img {
-			max-width:100%;
+			max-width:100vw;
 	    max-height:auto;
 	    width: auto;
 	    height: 40px;
@@ -189,6 +184,7 @@ body {
 		.banner img {
 			height: 60vw;
 			width: 100vw;
+			max-width: 100vw;
 		}
 
 	.lscontent {
@@ -220,10 +216,12 @@ body {
 			}
 	.rscontent {
 		grid-area: rscontent;
-
+		margin-top: 4vw;
+		margin-bottom: 4vw;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+		width: 100vw;
 	}
 		.rscontent img {
 			height: 300px;
@@ -239,13 +237,47 @@ body {
 .bottom-layout {
 	grid-area: footer;
 	display: grid;
+	grid-template-rows: 6fr auto;
+	grid-template-areas: "footer"
+												"rights";
+	height: auto;
+	width: 100vw;
+
+	flex-flow: row; 
+	font-size: 14px;
+	margin-right: auto;
+	margin-left: auto;
+
+	text-align: center;
+	padding: 20px;
+
+	background-color: #dedede;
+
+	border-top: 1px solid grey;
 }
 	.footer {
-		display: inherit;
-		background-color: #cbcbcb;
-		height: 200px;
+		display: flex;
+		justify-content: space-between;
 	}
-
+	.side1 {
+		margin-left: 80px;
+		margin-right: 80px;
+	}
+	.side2 {
+		margin-left: 80px;
+		margin-right: 80px;
+	}
+	.side3 {
+		margin-left: 80px;
+		margin-right: 80px;
+	}
+	.side4 {
+		margin-left: 80px;
+		margin-right: 80px;
+	}
+	.rights {
+		grid-area: rights;
+	}
 
 
 

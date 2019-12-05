@@ -33,8 +33,8 @@ body {
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-areas: "menu" 
-						"content"
-						"footer";
+						"content";
+
 }
 
 
@@ -56,14 +56,15 @@ body {
 	display: grid;
 	grid-template-columns: 1fr;
 /*	grid-template-rows: auto auto 1fr;*/
-	grid-template-areas: "top-menu"
-						"middle-menu"
+	grid-template-areas:"middle-menu"
 						"bottom-menu";
 	height: fit-content;
 	border-bottom: 1px solid black;
+	max-width: 100vw;
 
 }
 	.top-menu {
+		grid-area: top-menu;
 		display: flex;
 		height: 30px;
 		justify-content: center;
@@ -164,101 +165,14 @@ body {
 .middle-layout {
 	grid-area: content;
 
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-areas: "line1 line1"
-												"line2 line2"
-											 "lscontent rscontent";
-	min-height: 100vh;
-
-/*	margin-left: 4vw;
-	margin-right: 4vw;
-	margin-top: 4vw;
-	margin-bottom: 4vw;*/
-}
-	.offer {
-		grid-area: line1;
-		background-color: #cecece;
-		height: auto;
-		border-bottom: 1px solid grey;
+	display: flex;
+	flex-flow: column;
+	max-width: 100vw;
 	}
-		.offer img {
-			max-width:100%;
-	    max-height:auto;
-	    width: auto;
-	    height: 40px;
-		}
-
-	.banner {
-		grid-area: line2;
-		background-color: green;
-	}
-		.banner img {
-			height: 60vw;
-			width: 100vw;
-		}
-
-	.lscontent {
-		grid-area: lscontent;
-
-		display: flex;
-		background-color: #c0c0c0;
-		grid-column: 1 / 2;
-		flex-wrap: wrap;
-		justify-content: flex-start;
-		align-content: center;
-		flex-direction: column;
-		position: relative;
-	}
-		.lscontent ul {
-			list-style: none;
-			overflow: hidden;
-			overflow-y: scroll;
-			max-height: 100vh;
-			width: 100%;
-		}
-
-		.fixed {
-			position: fixed;
-		}
-
-			.lscontent li {
-				margin-top: 10px;
-			}
-	.rscontent {
-		grid-area: rscontent;
-
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
-		.rscontent img {
-			height: 300px;
-			width: auto;
-			margin-left: 4vw;
-			margin-right: 4vw;
-		}
-
-
-
-
-
-.bottom-layout {
-	grid-area: footer;
-	display: grid;
-}
-	.footer {
-		display: inherit;
-		background-color: #cbcbcb;
-		height: 200px;
+	.table {
 	}
 
 
-
-
-
-form {
-}
 
 .row {
   margin-left: 0;
@@ -278,7 +192,3 @@ form {
   width: 67.5%;
   text-align: center;
 }
-
-
-
-

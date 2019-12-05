@@ -5,11 +5,12 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+
 {% endblock %}
 {% block content %}
 <div class="middle-layout">
   <hr>
-  <h1 class="display-6 text-center">Insira seus dados</h1>
+  <h1 class="text-center">Insira seus dados</h1>
   <hr>
   <br>
   <form onsubmit="send(event)">
@@ -46,7 +47,7 @@
   <br>
 
   <hr>
-<h1 class="display-8 text-center">Lista de Produtos</h1>
+<h1 class="text-center">Lista de Produtos</h1>
 {% if products | length > 0 %}
 <table class="table table-striped">
 <thead>
