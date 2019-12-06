@@ -135,11 +135,12 @@ function addToCart (product) {
   var cart = JSON.parse(sessionStorage.getItem("cart"));
   if (!cart) {
     cart = [];
-  }
+  }  
 
   var find = cart.find(function (item) {
-    return item.id === product.id;
+    return item._id === product._id;
   });
+
 
   if (find) {
     find.quantity++;
@@ -153,8 +154,8 @@ function addToCart (product) {
 }
 
 $(document).ready(function () {
-  $('#addProduct').click(function () {
-    var id = $('#productId').val();
+  $('button.addProduct').click(function () {
+    var id = $(this).val();
     $.get('/api/products/' + id, function (product) {
       addToCart(product);
     })

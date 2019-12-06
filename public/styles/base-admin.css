@@ -101,7 +101,7 @@ body {
 				width: auto;
 				margin-left: 10px;
 				padding-right: 20px; 
-				border-right: 1px solid grey;
+				border-right: 2px solid grey;
 			}
 		.search {
 			grid-area: search;
@@ -111,6 +111,8 @@ body {
 			align-items: center;
 			font-size: 18px;
 			text-align: left;
+			margin-left: 20px;
+			font-weight: 500;
 		}
 			.search form {
 				flex-wrap: nowrap;

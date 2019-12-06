@@ -8,6 +8,7 @@
 	<base href="/">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 	<link rel="stylesheet" type="text/css" href="styles/base.css">
 	{% block styles %}
     {% endblock %}
@@ -51,21 +52,21 @@
 	<div class="bottom-layout">
 		<div class="footer">
 		<div class="side1">
-			Sobre Nós</br>
-			Sobre a Etna</br>
-			Nossas lojas</br>
-			Casa Etna</br>
-			Retire na Loja</br>
-			Trabalhe conosco</br>
+			<a href="#">Sobre Nós</a></br>
+			<a href="#">Sobre a ATC</a></br>
+			<a href="#">Nossas lojas</a></br>
+			<a href="#">Casa ATC</a></br>
+			<a href="#">Retire na Loja</a></br>
+			<a href="#">Trabalhe conosco</a></br>
 		</div>
 
 		<div class="side2">
-			Principais dúvidas</br>
-			Acompanhe seu pedido</br>
-			Troca e Devolução</br>
-			Política e Privacidade</br>
-			Regulamento de Campanhas</br>
-			Serviços</br>
+			<a href="#">Principais dúvidas</a></br>
+			<a href="#">Acompanhe seu pedido</a></br>
+			<a href="#">Troca e Devolução</a></br>
+			<a href="#">Política e Privacidade</a></br>
+			<a href="#">Regulamento de Campanhas</a></br>
+			<a href="#">Serviços</a></br>
 		</div>
 
 		<p class="side3">
@@ -79,21 +80,30 @@
 		</p>
 
 		<p class="side4">
-			Segurança e Privacidade</br>
-			Forma de Pagamento</br>
-			Acompanhe a Etna</br>
-			Facebook</br>
-			Instagram</br>
-			Youtube</br>
+			<a href="#">Segurança e Privacidade</a></br>
+			<a href="#">Forma de Pagamento</a></br>
+			<a href="#">Acompanhe a ATC</a></br>
+			<a href="#">Facebook</a></br>
+			<a href="#">Instagram</a></br>
+			<a href="#">Youtube</a></br>
 		</p>
 	</div>
 		<div class="rights">
-			Todos os direitos reservados
+			© Copyright 2001-2019 ATC Furniture - Todos os direitos reservados.
 		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<script>
+	$( function() {
+	  $( "#birthday" ).datepicker();
+	} );
+	</script>
 	<script src="js/index.js"></script>
 	{% block script %}
     {% endblock %}

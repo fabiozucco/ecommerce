@@ -1,126 +1,34 @@
 {% extends './layouts/base.html' %}
 	{% block styles %}
-    {% endblock %}
+	<link rel="stylesheet" type="text/css" href="styles/products.css">
+  {% endblock %}
 	{% block content %}
 	<div class="middle-layout">
-<!-- 		<div class="lscontent">
-			<ul>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-				<li><a href="#">Poltronas</a></li>
-				<li><a href="#">Roupeiros</a></li>
-				<li><a href="#">Armários</a></li>
-			</ul>
-		</div> -->
-		<div class="rscontent">
+		<div class="list">
 			<h1 class="display-8 text-center">Lista de Produtos</h1>
+			</div>
+			<div class="rscontent">
 				{% if products | length > 0 %}
-				<table class="table table-striped">
-				<thead>
-				  <tr>
-				    <th scope="col">id</th>
-				    <th scope="col">Nome</th>
-				    <th scope="col">Preço</th>
-				    <th scope="col">URL</th>
-				    <th scope="col">Descrição</th>
-				    <th scope="col"></th>
-				    <th scope="col"></th>
-				  </tr>
-				</thead>
-				{% for product in products %}
-				<tbody>
-				  <tr>
-				    <td>{{ product._id }}</td>
-				    <td>{{ product.name }}</td>
-				    <td>{{ product.price }}</td>
-				    <td><img src="{{ product.url }}"></td>
-				    <td>{{ product.description }}</td>
-				  </tr>
-				</tbody>
-				<input type="hidden" name="productId" id="productId" value="{{ product._id }}" />
-				<button id="addProduct" class="btn float-right btn-danger">Adicionar produto</button>
-				  {% endfor %}
-				</table>
+						{% for product in products %}
+						<div class="products">
+							<div class="p_img"><img src="{{ product.url }}"></div>
+					    <div class="p_title"><h3>{{ product.name }}</h3></div>
+					    <div class="p_price">{{ product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) }}</div>
+					    <div class="p_description">{{ product.description }}</div>					  	
+							<div class="p_button"><button value="{{ product._id }}" class="btn float-right btn-danger addProduct">Adicionar produto</button></div>
+						</div>
+				  	{% endfor %}
 				{% else %}
 				<div class="jumbotron">
-
-				<h5 class="text-center">Sem produtos cadastrados</h5>
-			</div>
-
+					<h5 class="text-center">Sem produtos cadastrados</h5>
+				</div>
 			{% endif %}
-<!-- 			<img src="images/HOME_POLTRONA.png">
-			<img src="images/HOME_POLTRONA.png">
-			<img src="images/HOME_POLTRONA.png">
-			<img src="images/HOME_POLTRONA.png">	
-			<img src="images/HOME_POLTRONA.png">
-			<img src="images/HOME_POLTRONA.png">
-			<img src="images/HOME_POLTRONA.png">
-			<img src="images/HOME_POLTRONA.png">
-			<img src="images/HOME_POLTRONA.png">
-			<img src="images/HOME_POLTRONA.png"> -->	
 		</div>
 	</div>
 {% endblock %}
 {% block script %}
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script>
-$( function() {
-  $( "#birthday" ).datepicker();
-} );
-</script>
+
 <script src="/js/products.js"></script>
 <script src="/js/base.js"></script>
 {% endblock %}

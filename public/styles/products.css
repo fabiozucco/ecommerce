@@ -1,0 +1,66 @@
+.list {
+	margin-top: 50px;
+	grid-area: line2;
+}
+
+.products {
+	display: grid;
+	grid-template: "img" auto
+						"title"	auto
+						"price" auto
+						"description" 2fr
+						"button" 1fr;
+
+	max-width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+
+	border: 3px solid grey;
+	text-align: center;
+	max-width: 25rem;
+	min-width: 25rem;
+	min-height: 30rem;
+	max-height: 50rem;
+}
+
+	.products .p_img {
+		grid-area: img;
+	}
+
+	.products .p_title {
+		grid-area: title;
+		font-size: 
+	}
+
+	.products .p_price {
+		grid-area: price;
+		font-weight: 500;
+		font-size: 30px;
+	}
+	.products .p_description {
+		grid-area: description;
+		padding-right: 2rem;
+		padding-left: 2rem;
+		align-content: center;
+		font-size: 14px;
+		align-self: center;
+	}
+	.products .p_button {
+		grid-area: button;
+		width: -webkit-fill-available;
+		margin-right: auto;
+		margin-left: auto;
+	}
+		.products button {
+			width: -webkit-fill-available;
+			height: 4rem;
+			border-radius: 0;
+		}
+	.products div {
+		flex-wrap: wrap;
+	}
+
+	.products img {
+		margin-right: auto;
+		margin-left: auto;
+	}
