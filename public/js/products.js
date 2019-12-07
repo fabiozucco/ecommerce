@@ -36,6 +36,8 @@ function send (event) {
       description: description
     }
 
+
+
     if (id.length == 0) {
       // ENVIA DADOS PARA O MONGODB
       $.post('/admin/products', data, function (res) {
@@ -126,9 +128,6 @@ $("#phone").mask("(99) 9999-9999?9")
         //         element.mask("(99) 9999-9999?9");
         //     }
         // });
-
-
-
 
 
 function addToCart (product) {

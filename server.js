@@ -13,6 +13,8 @@ const md5 = require('md5');
 
 const MONGODB_URL = 'mongodb+srv://fabiozucco:gu76ejrs@dbproject-bskcx.gcp.mongodb.net/dbproject-bskcx?retryWrites=true&w=majority';
 
+
+
 mongoose.connect(MONGODB_URL, {useNewUrlParser: true}, err => {
     if (err) {
         console.error('[SERVER_ERROR] MongoDB Connection:', err);
@@ -38,10 +40,12 @@ ecommerce.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 }));
 
 
-nunjucks.configure('views', {
+let environment = nunjucks.configure('views', {
     autoescape: true,
     express: ecommerce
 });
+
+require('useful-nunjucks-filters')(environment);
 
 ecommerce.use(express.static('public'));
 
@@ -170,9 +174,22 @@ ecommerce.get('/cart', (req,res) => {
 });
 
 ecommerce.get('/products', (req, res) => {
-  Products.find((err, products) => {
-       res.render('products.html', {products: products});
-     });
+  const filter = req.query.filter;  
+  const query = req.query.q;
+  let cond = [];
+  let queryObj = {};
+  if (filter === 'lower_price') {
+    cond = ['price', 0];
+  } else if (filter === 'higher_price') {
+    cond = ['price', -1];
+  }   
+
+  if (query && query.length > 0) {
+    queryObj = {"name": { "$regex": query, "$options": "i" }};
+  }
+  Products.find(queryObj).sort([cond]).exec((err, products) => {
+     res.render('products.html', {products: products, q: query});
+  });  
  });
 
 

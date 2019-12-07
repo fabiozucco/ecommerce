@@ -6,18 +6,21 @@
 <link rel="stylesheet" href="/resources/demos/style.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 <link rel="stylesheet" href="/styles/base.css">
+<link rel="stylesheet" href="/styles/form.css">
 {% endblock %}
 {% block content %}
 <div class="middle-layout">
-  <h1 class="display-6 text-center">Insira seus dados</h1>
+  <div class="list">
+    <h1 class="display-6 text-center">Insira seus dados</h1>
+  </div>
   <br>
   <form onsubmit="send(event)">
       <div class="row">
-        <div class="col-1">
+        <div class="col-2">
           <label>id</label>
           <input type="text" name="" value="" id="id" class="form-control" readonly>
         </div>
-        <div class="col-5">
+        <div class="col-4">
           <label>Nome</label>
           <input type="text" name="" value="" id="name" class="form-control">
         </div>
@@ -34,10 +37,10 @@
           <input type="num" name="" value="" id="phone" class="form-control">
         </div>
         <div class="col-3">
-          <label>Data de nascimento</label>
+          <label>Data de Nasc.</label>
           <input autocomplete="off" name="" value="" id="birthday" class="form-control" >
         </div>
-        <div class="col-2">
+        <div class="col-4">
           <label>CEP</label>
           <input type="num" name="" value="" id="cep" class="form-control">
         </div>
@@ -74,7 +77,7 @@
                <option value="EX">Estrangeiro</option>
             </select>
         </div>
-        <div class="col-3">
+        <div class="col-5">
           <label>Cidade</label>
           <input class="form-control" type="text" name="" value="" id="city" class="form-control">
         </div>
@@ -82,15 +85,15 @@
           <label>Bairro</label>
           <input type="text" name="" value="" id="neighborhood" class="form-control">
         </div>
-        <div class="col-7 ">
+        <div class="col-8 ">
           <label>Endereço</label>
           <input type="text" name="" value="" id="address" class="form-control">
         </div>
-        <div class="col-2">
+        <div class="col-3">
           <label>Número</label>
           <input type="text" name="" value="" id="number" class="form-control">
         </div>
-        <div class="col-3">
+        <div class="col-9">
           <label>Complemento</label>
           <input type="text" name="" value="" id="complement" class="form-control">
         </div>

@@ -1,0 +1,25 @@
+.middle-layout {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template: "line1 line1" auto
+						"line2 line2" auto	
+						"rscontent rscontent" 1fr;
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.list {
+	grid-area: line1;
+
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.form_send {
+	grid-area: rscontent;
+}
+
+.btn-danger {
+	margin-right: 20px;
+}

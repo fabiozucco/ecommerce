@@ -7,13 +7,21 @@
 		<div class="list">
 			<h1 class="display-8 text-center">Lista de Produtos</h1>
 			</div>
+			<div class="lscontent">
+				<div class="filter_title"><h5>Filtro</h5></div>
+				<div class="filter_items">
+					<h6>Selecionar por:</h6>
+					<a href="/products?filter=lower_price&q={{ q }}">Menor preço</a>
+					<a href="/products?filter=higher_price&q={{ q }}">Maior preço</a>															
+				</div>
+			</div>
 			<div class="rscontent">
 				{% if products | length > 0 %}
 						{% for product in products %}
 						<div class="products">
 							<div class="p_img"><img src="{{ product.url }}"></div>
 					    <div class="p_title"><h3>{{ product.name }}</h3></div>
-					    <div class="p_price">{{ product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) }}</div>
+					    <div class="p_price">{{ product.price | currency('R$')  }}</div>
 					    <div class="p_description">{{ product.description }}</div>					  	
 							<div class="p_button"><button value="{{ product._id }}" class="btn float-right btn-danger addProduct">Adicionar produto</button></div>
 						</div>

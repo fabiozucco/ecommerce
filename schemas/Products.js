@@ -1,7 +1,8 @@
 const {Schema} = require('mongoose');
+
 module.exports = new Schema({
-    name: String,
-    price: String,
+    name: String,    
+    price: Number,
     url: String,
     description: String,
 });
