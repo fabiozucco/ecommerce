@@ -64,11 +64,11 @@
 {% for product in products %}
 <tbody>
   <tr>
-    <td>{{ product._id }}</td>
-    <td>{{ product.name }}</td>
-    <td>{{ product.price }}</td>
-    <td>{{ product.url }}</td>
-    <td>{{ product.description }}</td>
+    <td title="{{ product._id }}">{{ product._id }}</td>
+    <td title="{{ product.name }}">{{ product.name }}</td>
+    <td title="{{ product.price }}">{{ product.price }}</td>
+    <td title="{{ product.url }}">{{ product.url }}</td>
+    <td title="{{ product.description }}">{{ product.description }}</td>
     <td><button class="btn btn-sm btn-danger btn-remove" id="{{ product._id }}">Excluir</button></td>
     <td><button class="btn btn-sm btn-warning btn-update" id="{{ product._id }}">Editar</button></td>
   </tr>

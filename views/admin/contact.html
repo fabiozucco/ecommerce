@@ -26,17 +26,17 @@
     {% for contact in contacts %}
     <tbody>
       <tr>
-        <td>{{ contact._id }}</td>
-        <td>{{ contact.date }}</td>
-        <td>{{ contact.name }}</td>
-        <td>{{ contact.email }}</td>
-        <td>{{ contact.message }}</td>
+        <td title="{{ contact._id }}">{{ contact._id }}</td>
+        <td title="{{ contact.date }}">{{ contact.date }}</td>
+        <td title="{{ contact.name }}">{{ contact.name }}</td>
+        <td title="{{ contact.email }}">{{ contact.email }}</td>
+        <td title="{{ contact.message }}">{{ contact.message }}</td>
         <td><button class="btn btn-sm btn-danger btn-remove" id="{{ contact._id }}">Excluir</button></td>
         <td>
            <button class="btn btn-sm btn-warning btn-response" id="{{ contact._id }}" value="{{ contact.email }}">Responder</button>
         </td>
         <tr>
-          <td class="inner{{ contact._id }}"></td>
+          <td class="inner{{ contact._id }}" id="responser"></td>
         </tr>
       </tr>
     </tbody>
@@ -51,11 +51,11 @@
       <div class="response" style="display: none;">
         <tr>
           <td>
-            <div class="col-1">
+            <div class="col-6">
               <label>Assunto</label>
               <input type="text" name="" value="" id="subject" class="form-control">
             </div>
-            <div class="col-1">
+            <div class="col-6">
             <label>Resposta</label>
             <textarea id="response" class="form-control"></textarea>
              <button type="submit" class="btn btn-sm btn-success btn-send">Enviar</button>
