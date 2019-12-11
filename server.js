@@ -147,15 +147,26 @@ ecommerce.put('/admin/products', (req, res) => {
 });
 
 ecommerce.get('/admin/products', (req, res) => {
-  // Products.find((err, products) => {
+  Products.find((err, products) => {
     Categories.find().sort('name').exec((err, categories) => {
        // res.render('admin/products.html', {products: products});
        Products.find().exec((err, products) => {
           res.render('admin/products.html', {categories: categories, products: products});
        })
-      
      });
- });
+  });
+});
+//    Products.aggregate([{
+//     $lookup: {
+//         from: "categories", // collection name in db
+//         localField: "category",
+//         foreignField: "_id",
+//         as: "categoryObject"
+//     }
+//   }]).sort('name').exec((err, products) => {
+//       res.render('admin/products.html', {products: products});
+//   });
+// });
 
  ecommerce.delete('/admin/products/:id', (req, res) => {
   Products.findOneAndRemove({_id: req.params.id}, (err, obj) => {
@@ -181,18 +192,18 @@ ecommerce.delete('/admin/category/:id', (req, res) => {
   });
 });
 
-ecommerce.get('/admin/list-products', (req, res) => {
-  Products.aggregate([{
-    $lookup: {
-        from: "categories", // collection name in db
-        localField: "category",
-        foreignField: "_id",
-        as: "categoryObject"
-    }
-  }]).sort('name').exec((err, obj) => {
-      res.render('admin/list-products.html', {products: obj});
-  });
-});
+// ecommerce.get('/admin/list-products', (req, res) => {
+//   Products.aggregate([{
+//     $lookup: {
+//         from: "categories", // collection name in db
+//         localField: "category",
+//         foreignField: "_id",
+//         as: "categoryObject"
+//     }
+//   }]).sort('name').exec((err, obj) => {
+//       res.render('admin/list-products.html', {products: obj});
+//   });
+// });
 
 ecommerce.get('/admin/list-categories', (req, res) => {
   Categories.find().sort('name').exec((err, obj) => {

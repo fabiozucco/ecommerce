@@ -60,6 +60,7 @@
 <thead>
   <tr>
     <th scope="col">id</th>
+    <th scope="col">Categoria</th>
     <th scope="col">Nome</th>
     <th scope="col">Preço</th>
     <th scope="col">URL</th>
@@ -72,6 +73,7 @@
 <tbody>
   <tr class="products">
     <td title="{{ product._id }}">{{ product._id }}</td>
+    <td title="{{ product.categoryObject[0].name }}">{{ product.categoryObject[0].name }}</td>
     <td title="{{ product.name }}">{{ product.name }}</td>
     <td title="{{ product.price }}">{{ product.price }}</td>
     <td title="{{ product.url }}">{{ product.url }}</td>
