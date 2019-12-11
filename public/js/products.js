@@ -6,6 +6,7 @@ function send (event) {
   var url = $("#url").val();
   var description = $("#description").val();
   var id = $("#id").val();
+  var category = $('#category').val();
 
   // VÁLIDAÇÃO DOS CAMPOS DO FORMULÁRIO
   if (name == "") {
@@ -33,7 +34,8 @@ function send (event) {
       name: name,
       price: price,
       url: url,
-      description: description
+      description: description,
+      category: category
     }
 
 

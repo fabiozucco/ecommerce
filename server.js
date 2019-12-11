@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const mongoose = require('mongoose');
 const ProductsSchema = require('./schemas/Products');
-// const UsersSchema = require('./schemas/Users');
 const ClientsSchema = require('./schemas/Clients');
 const ContactsSchema = require('./schemas/Contacts');
 const CategoriesSchema = require('./schemas/Categories');
@@ -39,7 +38,6 @@ process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 const Products = mongoose.model('Products', ProductsSchema);
 const Contacts = mongoose.model('Contacts', ContactsSchema);
-// const Users = mongoose.model('User', UsersSchema);
 const Clients = mongoose.model('Clients', ClientsSchema);
 const Categories = mongoose.model('Categories', CategoriesSchema);
 
@@ -128,6 +126,22 @@ ecommerce.get('/admin/form', (req, res) => {
 
 // REQUISIÇÃO - PRODUTOS
 
+ecommerce.get('/c/:slug', (req, res) => {
+  Categories.aggregate([
+    {$match: {slug: req.params.slug}},
+    {
+    $lookup: {
+        from: "products", // collection name in db
+        localField: "_id",
+        foreignField: "category",
+        as: "products"
+    }
+  }]).exec((err, obj) => {
+    console.info(obj);
+     res.render('products.html', {products: obj[0].products});
+ });
+});
+
 ecommerce.post('/admin/products', (req, res) => {
   var product = new Products(req.body);
 
@@ -147,25 +161,27 @@ ecommerce.put('/admin/products', (req, res) => {
 });
 
 ecommerce.get('/admin/products', (req, res) => {
-  Products.find((err, products) => {
-    Categories.find().sort('name').exec((err, categories) => {
-       // res.render('admin/products.html', {products: products});
-       Products.find().exec((err, products) => {
-          res.render('admin/products.html', {categories: categories, products: products});
-       })
-     });
-  });
+
+ // https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise/all
+
+  const promiseProducts = Products.aggregate([{
+    $lookup: {
+        from: "categories", // collection name in db
+        localField: "category",
+        foreignField: "_id",
+        as: "categoryObject"
+    }
+  }]).sort('name').exec();
+
+  const promiseCategories = Categories.find().sort('name').exec();
+  
+  Promise.all([promiseProducts, promiseCategories]).then ((values) => {
+    const products = values[0];
+    const categories = values[1];
+    res.render('admin/products.html', {categories: categories, products: products});
+  })  
 });
-//    Products.aggregate([{
-//     $lookup: {
-//         from: "categories", // collection name in db
-//         localField: "category",
-//         foreignField: "_id",
-//         as: "categoryObject"
-//     }
-//   }]).sort('name').exec((err, products) => {
-//       res.render('admin/products.html', {products: products});
-//   });
+  
 // });
 
  ecommerce.delete('/admin/products/:id', (req, res) => {
