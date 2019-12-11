@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Slug</th>
+        <th>Opções</th>
+      </tr>
+  </thead>
+<tbody>
+  {% for item in categories %}
+  <tr>
+    <td>{{ item._id }}</td>
+    <td><p>{{ item.name }}</p></td>
+    <td><p>{{ item.slug }}</p></td>
+    <td><button class="btn btn-sm btn-outline-danger btn-remove" id="{{ item._id }}">Excluir</button></td>
+  </tr>
+  {% endfor %}
+</tbody>
+</table>

@@ -9,7 +9,7 @@
 {% block content %}
 <div class="middle-layout">
   <br>
-    <h1 class="display-8 text-center">Lista de Mensagens</h1>
+    <h1 class="display-8 text-center mb-4">Lista de Mensagens</h1>
     {% if contacts | length > 0 %}
     <table class="table table-striped">
     <thead>
@@ -25,7 +25,7 @@
     </thead>
     {% for contact in contacts %}
     <tbody>
-      <tr>
+      <tr class="contacts">
         <td title="{{ contact._id }}">{{ contact._id }}</td>
         <td title="{{ contact.date }}">{{ contact.date }}</td>
         <td title="{{ contact.name }}">{{ contact.name }}</td>
@@ -35,9 +35,9 @@
         <td>
            <button class="btn btn-sm btn-warning btn-response" id="{{ contact._id }}" value="{{ contact.email }}">Responder</button>
         </td>
-        <tr>
-          <td class="inner{{ contact._id }}" id="responser"></td>
-        </tr>
+      </tr>
+      <tr class="answer">
+        <td class="inner{{ contact._id }}" id="responser"></td>
       </tr>
     </tbody>
   {% endfor %}
@@ -51,14 +51,14 @@
       <div class="response" style="display: none;">
         <tr>
           <td>
-            <div class="col-6">
+            <div>
               <label>Assunto</label>
               <input type="text" name="" value="" id="subject" class="form-control">
             </div>
-            <div class="col-6">
-            <label>Resposta</label>
-            <textarea id="response" class="form-control"></textarea>
-             <button type="submit" class="btn btn-sm btn-success btn-send">Enviar</button>
+            <div>
+              <label>Resposta</label>
+              <textarea id="response" class="form-control"></textarea>
+              <button type="submit" class="btn btn-sm btn-success btn-send">Enviar</button>
             </div>
           </td>
           </tr> 

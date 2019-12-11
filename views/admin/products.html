@@ -9,8 +9,7 @@
 {% endblock %}
 {% block content %}
 <div class="middle-layout">
-  <hr>
-  <h1 class="text-center">Insira seus dados</h1>
+  <h1 class="text-center mt-4">Insira seus dados</h1>
   <hr>
   <br>
   <form onsubmit="send(event)">
@@ -23,11 +22,19 @@
           <label>Nome</label>
           <input type="text" name="" value="" id="name" class="form-control">
         </div>
-        <div class="col-6">
+        <div class="col-6 mb-2">
+          <label>Categorias:</label>
+          <select class="form-control" id="category" name="category">
+              {% for item in categories %}
+                <option value="{{ item._id }}">{{ item.name }}</option>
+              {% endfor%}
+            </select>
+        </div>
+        <div class="col-3">
           <label>Preço</label>
           <input type="text" name="" value="" id="price" class="form-control">
         </div>
-        <div class="col-6">
+        <div class="col-3">
           <label>URL da Imagem</label>
           <input type="text" name="" value="" id="url" class="form-control">
         </div>
@@ -63,7 +70,7 @@
 </thead>
 {% for product in products %}
 <tbody>
-  <tr>
+  <tr class="products">
     <td title="{{ product._id }}">{{ product._id }}</td>
     <td title="{{ product.name }}">{{ product.name }}</td>
     <td title="{{ product.price }}">{{ product.price }}</td>

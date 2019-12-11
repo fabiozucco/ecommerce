@@ -5,4 +5,5 @@ module.exports = new Schema({
     price: Number,
     url: String,
     description: String,
+    category: Schema.Types.ObjectId
 });

@@ -179,6 +179,7 @@ body {
 		  margin-right: auto;
 		  table-layout: fixed;
 		  text-align: center;
+		  display: inline-table;
 		}
 
 		td {
@@ -188,9 +189,32 @@ body {
 		    white-space: nowrap;
 		}
 
-		.responser {
-			width: 100%;
+		tr {
+			width: 80vw;
 		}
+
+		.answer {
+			display: inline-table;
+		}
+
+		.answer .btn {
+			margin-top: 10px;
+		}
+
+/*		.response label {
+			text-align: center;
+			width: 77.5vw;
+		}
+
+		.response input {
+			width: 77.5vw;
+			margin-left: 0;
+		}
+
+		.response textarea {
+			width: 77.5vw;
+			margin-left: 0;
+		}*/
 
 
 

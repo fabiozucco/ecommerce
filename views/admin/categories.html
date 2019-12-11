@@ -1,0 +1,48 @@
+{% extends '../layouts/base-admin.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/base-admin.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+{% endblock %}
+
+{% block content %}
+<div class="middle-layout">
+  <h1 class="display-6 text-center mt-4 mb-4">Gerenciamento de Categorias</h1>
+  <hr />
+    <form>
+      <div class="row">
+        <div class="col-6">
+          Nome:
+          <input class="form-control" name="name" id='name' />
+        </div>  
+        <div class="col-6">
+          Slug:
+          <input class="form-control" readonly name="slug" id='slug' />
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-12">
+          <button type="submit" name="button" class="btn btn-primary">Cadastrar</button>
+        </div>
+      </div>
+    </form>
+  <div class="mt-5">
+    <h2> Lista de categorias </h2>
+    <div id="list-categories"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block title %}
+ Admin | Produtos
+{% endblock %}
+
+{% block script %}
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="/js/base.js"></script>
+{% endblock %}

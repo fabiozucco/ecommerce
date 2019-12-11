@@ -53,10 +53,8 @@ body {
 
 .top-layout {
 	grid-area: menu;
-
 	display: grid;
 	grid-template-columns: 1fr;
-/*	grid-template-rows: auto auto 1fr;*/
 	grid-template-areas: "top-menu"
 						"middle-menu"
 						"bottom-menu";
@@ -64,19 +62,43 @@ body {
 	border-bottom: 1px solid black;
 }
 	.top-menu {
-		display: flex;
+		display: grid;
+		grid-template: "left-menu right-menu" / 
+														1fr auto;
 		height: 30px;
 		justify-content: center;
 		align-items: center;
 		border-bottom: 1px solid #e5e5e4;
 	}
-		.top-menu a {
+	.right-menu {
+			grid-area: left-menu;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-left: 105px;
+		}
+		.right-menu a {
+			justify-content: center;
+			align-items: center;
 			margin-left: 10px;
 			margin-right: 10px;
 			font-size: 14px;
 			text-decoration: none;
 			color: #7f7f7f;
 		}
+		.left-menu {
+			grid-area: right-menu;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+		}
+		 .left-menu a {
+		 	margin-left: 10px;
+			margin-right: 10px;
+			font-size: 14px;
+			text-decoration: none;
+			color: #7f7f7f;
+		 }
 
 	.middle-menu {
 		display: grid;
@@ -132,6 +154,7 @@ body {
 			align-items: center;
 			margin-right: 20px;
 		}
+
 	.bottom-menu {
 		display: flex;
 		height: 50px;

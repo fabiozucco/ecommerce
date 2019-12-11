@@ -8,12 +8,19 @@ const ProductsSchema = require('./schemas/Products');
 // const UsersSchema = require('./schemas/Users');
 const ClientsSchema = require('./schemas/Clients');
 const ContactsSchema = require('./schemas/Contacts');
-// const CategoriesSchema = require('./schemas/Categories');
+const CategoriesSchema = require('./schemas/Categories');
 const md5 = require('md5');
 
 const MONGODB_URL = 'mongodb+srv://fabiozucco:gu76ejrs@dbproject-bskcx.gcp.mongodb.net/dbproject-bskcx?retryWrites=true&w=majority';
 
+let env = nunjucks.configure('views', {
+    autoescape: true,
+    express: ecommerce
+});
 
+require('useful-nunjucks-filters')(env);
+
+ecommerce.set('engine', env);
 
 mongoose.connect(MONGODB_URL, {useNewUrlParser: true}, err => {
     if (err) {
@@ -26,28 +33,37 @@ mongoose.connect(MONGODB_URL, {useNewUrlParser: true}, err => {
   });
 });
 
+
+
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = 0;
 
 const Products = mongoose.model('Products', ProductsSchema);
 const Contacts = mongoose.model('Contacts', ContactsSchema);
 // const Users = mongoose.model('User', UsersSchema);
 const Clients = mongoose.model('Clients', ClientsSchema);
-// const Categories = mongoose.model('Categories', CategoriesSchema);
+const Categories = mongoose.model('Categories', CategoriesSchema);
 
 ecommerce.use(bodyParser.json());       // to support JSON-encoded bodies
 ecommerce.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
-
-let environment = nunjucks.configure('views', {
-    autoescape: true,
-    express: ecommerce
-});
-
-require('useful-nunjucks-filters')(environment);
-
 ecommerce.use(express.static('public'));
+
+ecommerce.use((req, res, next) => {
+  const engine = res.app.get('engine');
+  Categories.aggregate([{
+    $lookup: {
+      from: "products",
+      localField: "_id",
+      foreignField: "category",
+      as: "products" 
+    }
+  }]).sort('name').exec((err, obj) => {
+    engine.addGlobal('categories', obj);
+    next();
+  });
+});
 
 
 
@@ -131,8 +147,13 @@ ecommerce.put('/admin/products', (req, res) => {
 });
 
 ecommerce.get('/admin/products', (req, res) => {
-  Products.find((err, products) => {
-       res.render('admin/products.html', {products: products});
+  // Products.find((err, products) => {
+    Categories.find().sort('name').exec((err, categories) => {
+       // res.render('admin/products.html', {products: products});
+       Products.find().exec((err, products) => {
+          res.render('admin/products.html', {categories: categories, products: products});
+       })
+      
      });
  });
 
@@ -149,6 +170,48 @@ ecommerce.get('/admin/products', (req, res) => {
 //
 
 
+// CATEGORIAS
+
+ecommerce.delete('/admin/category/:id', (req, res) => {
+  Categories.findOneAndRemove({_id: req.params.id}, (err, obj) => {
+    if(err) {
+      res.send('error');
+    }
+    res.send('ok');
+  });
+});
+
+ecommerce.get('/admin/list-products', (req, res) => {
+  Products.aggregate([{
+    $lookup: {
+        from: "categories", // collection name in db
+        localField: "category",
+        foreignField: "_id",
+        as: "categoryObject"
+    }
+  }]).sort('name').exec((err, obj) => {
+      res.render('admin/list-products.html', {products: obj});
+  });
+});
+
+ecommerce.get('/admin/list-categories', (req, res) => {
+  Categories.find().sort('name').exec((err, obj) => {
+      res.render('admin/list-categories.html', {categories: obj});
+  });
+});
+
+ecommerce.get('/admin/categories', (req, res) => {
+  res.render('admin/categories.html');
+});
+
+
+ecommerce.post('/admin/categories', (req, res) => {
+  var newCategory = new Categories(req.body);
+  newCategory.save((err, newCategory) => {
+    console.info(newCategory.name + ' salvo');
+    res.send('ok');
+  })
+});
 
 
 // GET
