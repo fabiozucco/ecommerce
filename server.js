@@ -137,7 +137,6 @@ ecommerce.get('/c/:slug', (req, res) => {
         as: "products"
     }
   }]).exec((err, obj) => {
-    console.info(obj);
      res.render('products.html', {products: obj[0].products});
  });
 });

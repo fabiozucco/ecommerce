@@ -221,7 +221,7 @@ body {
 		align-content: center;
 		flex-direction: column;
 		position: relative;
-		width: 15vw;
+		width: 150px;
 		border-right: 2px solid grey;
 	}
 		.lscontent ul {
