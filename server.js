@@ -27,8 +27,8 @@ mongoose.connect(MONGODB_URL, {useNewUrlParser: true}, err => {
         process.exit(1);
     }
     console.info('Mongo connected');
-    ecommerce.listen(3000, () => {
-    console.log('Escutando na porta 3000');
+    ecommerce.listen(5000, () => {
+    console.log('Escutando na porta 5000');
   });
 });
 
