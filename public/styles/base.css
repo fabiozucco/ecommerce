@@ -259,9 +259,18 @@ body {
 		}
 
 		.ofertas {
+			height: 100px;
 			grid-area: ofertas; 
-			background-color: yellow;
+			background-color: #f7c65f;
+			display: flex;
+			justify-content: center;
+			align-self: flex-end;
+			margin-bottom: 	4vw;
 		}
+				.ofertas p {
+						align-self: flex-end;
+						font-size: 45px;
+				}
 
 		.produto {
 			grid-area: produtos;

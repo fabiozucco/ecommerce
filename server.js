@@ -126,6 +126,17 @@ ecommerce.get('/admin/form', (req, res) => {
 
 // REQUISIÇÃO - PRODUTOS
 
+ecommerce.get('/product/:id', (req, res) => {
+  Products.find({"_id": req.params.id }, (err, obj) => {
+      if (err) {
+        res.render('notfound.html');
+      } else {
+        const product = obj[0];
+        res.render('product.html', {product: product});
+      }
+  });
+});
+
 ecommerce.get('/c/:slug', (req, res) => {
   Categories.aggregate([
     {$match: {slug: req.params.slug}},

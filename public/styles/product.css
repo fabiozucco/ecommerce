@@ -1,0 +1,26 @@
+.product-detail {
+	display: grid;
+	grid-template: "left right" auto
+					/ 1fr 1fr;
+}
+		.right {
+			grid-area: right;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+							padding: 50px;
+		}
+
+
+		.left {
+			grid-area: left;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			margin: 50px;
+		}
+				.btn {
+					width: auto;
+					height: auto;
+				}

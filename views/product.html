@@ -1,0 +1,31 @@
+{% extends './layouts/base.html' %}
+{% block styles %}
+    <link rel="stylesheet" type="text/css" href="styles/product.css">
+{% endblock %}
+{% block content %}
+<div class="product-detail">
+
+  <div class="left">
+    <img src="{{ product.url }}" style="height: auto; width: 600px">
+  </div>
+  <div class="right">
+        <h1 class="display-4">{{ product.name }}</h1>
+        <p clas="small"><strong>Ref: {{ product.id }}</strong></p>
+        <h2 class="big float-right">{{ product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) }} </h2>
+        <input type="hidden" name="productId" id="productId" value="{{ product._id }}" />
+    <p class="pt-3">{{ product.description | striptags(true) | escape | nl2br }}</p>
+    <hr />
+    <button id="addProduct" value="{{ product._id }}" class="btn float-right btn-warning addProduct">Adicionar produto</button>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block title %}
+  Meu Produto {{ product.id }}
+{% endblock %}
+
+{% block script %}
+  <script src="/js/products.js" charset="utf-8"></script>
+  <script src="/js/base.js"></script>
+{% endblock %}
