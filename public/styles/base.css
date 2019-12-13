@@ -243,10 +243,13 @@ body {
 		grid-area: rscontent;
 		margin-top: 4vw;
 		margin-bottom: 4vw;
-		display: flex;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template: "ofertas" auto
+						"produtos" 1fr
+						/ 1fr;
+/*		flex-wrap: wrap;
 		justify-content: center;
-		min-width: 85vw;
+		min-width: 85vw;*/
 	}
 		.rscontent img {
 			height: 300px;
@@ -254,6 +257,93 @@ body {
 			margin-left: 4vw;
 			margin-right: 4vw;
 		}
+
+		.ofertas {
+			grid-area: ofertas; 
+			background-color: yellow;
+		}
+
+		.produto {
+			grid-area: produtos;
+			display: flex;
+			flex-direction: row;
+		}
+			.products a {
+				color: black;
+			}
+
+
+
+	.cart-content {
+		display: grid;
+		grid-template: "loger shopper" auto / 1fr 1fr;
+		min-height: 100vh;
+	}	
+
+		.loggin {
+			grid-area: loger;
+			display: flex;
+			margin-left: auto;
+			margin-right: auto;
+			max-height: 50vh;
+		}
+			.loggin-content {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-content: center;
+				width: 20rem;
+			}
+
+			.enter {
+				margin-top: 10px;
+			}
+				.enter button {
+					width: -webkit-fill-available;
+					height: auto;
+					margin-bottom: 10px;
+				}
+
+			.signup {
+			}
+				.signup a {
+					width: -webkit-fill-available;
+					vertical-align: center;
+					height: auto;
+				}
+
+			.loggin h6 {
+			}
+
+		.cart-items {
+			grid-area: shopper;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: center;
+			background-color: #f4f4f4;
+		}
+
+			.cart-items h5 {
+				margin-top: 50px;
+				margin-bottom: 50px;
+			}
+			.cart-items a {
+				height: auto;
+				float: none;
+			}
+
+			#totalcart {
+				display: flex;
+				justify-content: flex-end;
+    			margin-top: 40px;
+    			font-size: 24px;
+    			text-align: right;
+			}
+
+			.list-unstyled {
+				padding-right: 20px;
+			}
 
 
 

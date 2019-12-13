@@ -1,37 +1,27 @@
 {% extends './layouts/base.html' %}
 
 {% block content %}
-<div class="row">
-  <div class="col-8 p-5">
-    <div class="jumbotron">
-      <h6 class="display-4">Olá, para prosseguir digite seu e-mail e senha para entrar</h6>
-      <form class="mt-5" method="post">
-        <div class="row">
-          <div class="col-5">
-            <input type="email" required name="email" id="email" value="" class="form-control" placeholder="email@email">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-5 mt-4">
-            <input type="password" required placeholder="senha" name="password" id="password" value="" class="form-control">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-5 mt-4 text-center">
-            <button type="submit" class="btn btn-primary btn-block" name="button">Entrar</button>
-            ou
-            <a href="/form" class="btn btn-outline-success btn-block" name="button">Cadastre-se</a>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <div class="col-4">
-    <div class="mt-5 jumbotron">
-      <h5 class="mb-3">Meu Carrinho</h5>
-      <div id="cart" >
+<div class="cart-content">
+  <form class="mt-5 loggin" method="post">
+    <div class="loggin-content">
+      <h6 class="display-4">Logar</h6>
+      <div class="login">
+        <input type="email" required name="email" id="email" value="" class="form-control mb-2" placeholder="email@email">
+        <input type="password" required placeholder="senha" name="password" id="password" value="" class="form-control">
+      </div>
+      <div class="enter">
+        <button type="submit" class="btn btn-primary" name="button">Entrar</button>
+        <p class="text-center mb-3">ou</p>
+      </div>
+      <div class="signup">
+        <a href="/form" class="btn btn-outline-success" name="button">Cadastre-se</a>
       </div>
     </div>
+  </form>
+  <div class="cart-items">
+    <h5>Meu Carrinho</h5>
+    <div id="cart"></div>
+    <div id="totalcart"></div>
   </div>
 </div>
 {% endblock %}

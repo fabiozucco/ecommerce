@@ -1,3 +1,19 @@
+.content {
+		grid-area: rscontent;
+		margin-top: 4vw;
+		margin-bottom: 4vw;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		min-width: 85vw;
+	}
+		.content img {
+			height: 300px;
+			width: auto;
+			margin-left: 4vw;
+			margin-right: 4vw;
+		}
+
 .list {
 	margin-top: 50px;
 	grid-area: line2;

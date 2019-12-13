@@ -243,7 +243,9 @@ ecommerce.post('/admin/categories', (req, res) => {
 // GET
 
 ecommerce.get('/', (req,res) => {
-	res.render('index.html');
+  Products.find().limit(3).sort({_id: 'desc'}).exec((err, products) => {
+      res.render('index.html', {products: products})
+  });
 });
 
 ecommerce.get('/base', (req,res) => {
