@@ -17,6 +17,8 @@ let env = nunjucks.configure('views', {
     express: ecommerce
 });
 
+var port = process.env.PORT || 3000;
+
 require('useful-nunjucks-filters')(env);
 
 ecommerce.set('engine', env);
@@ -27,8 +29,8 @@ mongoose.connect(MONGODB_URL, {useNewUrlParser: true}, err => {
         process.exit(1);
     }
     console.info('Mongo connected');
-    ecommerce.listen(5000, () => {
-    console.log('Escutando na porta 5000');
+    ecommerce.listen(port, () => {
+    console.log('Escutando na porta' + port);
   });
 });
 
