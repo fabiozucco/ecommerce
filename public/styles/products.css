@@ -105,3 +105,88 @@
 		margin-top: 2px;
 		margin-bottom: 2px;
 	}
+
+
+@media only screen and (max-width: 845px)
+{
+	body {
+		display: grid;
+		grid-template-areas:
+        "menu"
+        "content"
+        "footer";
+		overflow-x: hidden;
+	}
+
+	.bottom-menu {
+
+	}
+
+	.list h1 {
+		font-size: 60px;
+		margin-bottom: 20px;
+	}
+
+	.products {
+		min-width: -webkit-fill-available;
+		max-width: fit-content;
+		max-height: fit-content;
+		min-height: fit-content;
+		overflow-x: hidden;
+	}
+
+	.products .p_price {
+		font-size: 60px;
+	}
+
+	.products button {
+		font-size: 30px;
+		font-weight: 500;
+		height: 100px;
+	}
+
+	.products .p_title h3 {
+		font-size: 50px;
+	}
+
+	.products .p_description {
+		font-size: 25px;
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	.content img {
+		height: 500px;
+	}
+
+
+
+ .lscontent {
+ 	grid-area: line1;
+  display: inline-block;
+  width: auto;
+  background-color: whitesmoke;
+  padding-bottom: 20px;
+  }
+
+  .filter_items {
+  	flex-direction: row;
+  	justify-content: space-around;
+  	align-self: center;
+  }
+
+  .filter_title {
+  	justify-content: center;
+  }
+  .filter_title h5 {
+  	align-self: center;
+  	font-size: 30px;
+  }
+
+  .filter_items a {
+  	font-size: 30px;
+  }
+
+  .filter_items h6 {
+  	display: none;
+  }
+}

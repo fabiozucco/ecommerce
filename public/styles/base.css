@@ -438,3 +438,46 @@ form {
 
 
 
+
+
+@media only screen and (max-width: 845px)
+{
+	body {
+	}
+	.bottom-menu {
+		margin-bottom: 20px;
+		margin-top: 20px;
+	}
+	.bottom-menu a {
+		font-size: 30px;
+		font-weight: 500;
+
+	}
+
+	.products {
+		min-width: fit-content;
+	}
+
+	.content img {
+		height: 400px;
+	}
+
+
+	.bottom-layout {
+		width: -webkit-fill-available;
+	}
+
+	.footer {
+		flex-direction: column;
+		font-size: 20px;
+	}
+
+	.rights {
+		font-size: 20px;
+	}
+
+
+ .lscontent {
+   display: none;
+  }
+}
