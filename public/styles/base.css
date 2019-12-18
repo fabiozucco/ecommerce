@@ -458,10 +458,28 @@ form {
 		min-width: fit-content;
 	}
 
+	.produto {
+		flex-direction: column;
+	}
+
 	.content img {
 		height: 400px;
 	}
 
+	.banner img {
+		height: 550px;
+		width: auto;
+		max-width: 100%;
+	}
+
+	.p_img img {
+		height: 500px;
+	}
+
+	.offer img {
+		max-width: 100%;
+		height: 25px;
+	}
 
 	.bottom-layout {
 		width: -webkit-fill-available;
