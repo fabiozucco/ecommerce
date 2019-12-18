@@ -128,6 +128,10 @@ body {
 			justify-content: center;
 			align-items: center;
 		}
+			.fa-search {
+				display: none;
+			}
+
 			.search form {
 				flex-wrap: nowrap;
 				margin-left: 30px;
@@ -481,6 +485,38 @@ form {
 		height: 25px;
 	}
 
+	.top-menu {
+		height: 50px;
+	}
+
+	.left-menu a {
+		font-size: 20px;
+	}
+
+	.cart {
+		font-size: 20px;
+	}
+
+	.right-menu a {
+		height: auto;
+	}
+
+	.fa-search {
+		display: block;
+	}
+
+	.pesquisar {
+		display: none;
+	}
+
+	.btn {
+		width: auto;
+	}
+
+	.right-menu a {
+		font-size: 20px;
+	}
+
 	.bottom-layout {
 		width: -webkit-fill-available;
 	}
@@ -498,4 +534,60 @@ form {
  .lscontent {
    display: none;
   }
+
+ .cart-content {
+ 		display: block;
+  }
+
+  .cart-items {
+  	padding-bottom: 50px;
+  }
+
+ .cart-items ul {
+ 	font-size: 30px;
+ 	text-align: center;
+ }
+
+ .cart-items h5 {
+ 	font-size: 50px;
+ }
+
+ .list-unstyled h6 {
+ 	font-size: 35px;
+ }
+
+ .list-unstyled a {
+ 	width: 100px;
+ }
+
+ #totalcart {
+ 	font-size: 40px;
+ }
+
+ .loggin-content {
+ 		width: 80%;
+ 		margin-left: auto;
+ 		margin-right: auto;
+ }
+
+ .loggin {
+ 		margin-bottom: 100px;
+ 		text-align: center;
+ }
+ 	.loggin input {
+ 		height: 50px;
+ 	}
+
+ 	.loggin button {
+ 		height: 50px;
+ 	}
+
+ 	.enter button {
+ 		font-size: 25px;
+ 	}
+
+ 	.signup a {
+ 		height: 50px;
+ 		font-size: 25px;
+ 	}
 }

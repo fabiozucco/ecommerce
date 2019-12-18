@@ -10,7 +10,7 @@
   </div>
   <div class="right">
         <h1 class="display-4">{{ product.name }}</h1>
-        <p clas="small"><strong>Ref: {{ product.id }}</strong></p>
+        <p class="small"><strong>Ref: {{ product.id }}</strong></p>
         <h2 class="big float-right">{{ product.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 , style: 'currency', currency: 'BRL' }) }} </h2>
         <input type="hidden" name="productId" id="productId" value="{{ product._id }}" />
     <p class="pt-3">{{ product.description | striptags(true) | escape | nl2br }}</p>
