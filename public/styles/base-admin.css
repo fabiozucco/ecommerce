@@ -230,3 +230,15 @@ body {
   font-size: 18px;
 }
 
+
+
+@media only screen and (max-width: 845px)
+{
+	body {
+		max-width: 100%;
+	}
+	.middle-layout {
+		max-width: 100%;
+	}
+}
+
