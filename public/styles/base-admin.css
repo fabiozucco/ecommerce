@@ -216,7 +216,14 @@ body {
 			margin-left: 0;
 		}*/
 
+.table {
+	width: auto;
+	margin-left: 2rem;
+}
 
+.top-layout {
+	max-width: fit-content;
+}
 
 .row {
   margin-left: 0;
